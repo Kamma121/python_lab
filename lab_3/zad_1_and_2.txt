@@ -1,0 +1,47 @@
+3.1
+x = 2; y = 3;
+if (x > y):
+    result = x;
+else:
+    result = y;
+
+Kod zawiera błędy składniowe, średniki i nawias
+Moja propozycja poprawionego kodu:
+
+x, y = 2, 3
+if x > y:
+    result = x
+else:
+    result = y
+
+for i in "axby": if ord(i) < 100: print (i)
+W tym kodzie należy rozdzielić instrukcje na 3 nowe linie
+for i in "axby":
+    if ord(i) < 100:
+        print (i)
+
+for i in "axby": print (ord(i) if ord(i) < 100 else i)
+W tym kodzie również należy rozdzielić instrukcje tym razem na dwie linie,
+oraz usunąć spację przed funkcją print()
+for i in "axby":
+    print(ord(i) if ord(i) < 100 else i)
+
+
+3.2
+L = [3, 5, 4] ; L = L.sort()
+Funkcja sort() modyfikuje L w miejscu i zwraca None, dlatego wystarczy użyć L.sort()
+
+x, y = 1, 2, 3
+Przypisanie 3 wartości do dwóch zmiennych, trzeba dodać jeszcze jedną zmienną
+
+X = 1, 2, 3 ; X[1] = 4
+Nie możemy zmieniać wartości elementów tupli
+
+X = [1, 2, 3] ; X[3] = 4
+Próba przypisania wartości do elementu poza indeksem tablicy
+
+X = "abc" ; X.append("d")
+Funkcja append() jest dostępna tylko dla list
+
+L = list(map(pow, range(8)))
+Funckja pow przyjmuje dwa argumenty, w tym przypadku został podany tylko jeden argument
