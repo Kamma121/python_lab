@@ -3,7 +3,7 @@ from single_list import SingleList
 from node import Node
 
 
-class TestSingleListMethods(unittest.TestCase):
+class TestSingleList(unittest.TestCase):
 
     def setUp(self):
         self.list1 = SingleList()
