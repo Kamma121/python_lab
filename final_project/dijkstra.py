@@ -47,9 +47,21 @@ def dijkstra(graph, source):
                     distances[neighbor] = distance
                     q.put(neighbor)
 
-    # Wyświetlenie wyników dla wybranego wierzchołka źródłowego
-    print("Chosen source vertex: ", source)
-    print("Vertex:\t\tDistance from source:")
+    return distances
+
+
+def print_dijkstra_results(graph, source):
+    """
+    Wyświetla wyniki algorytmu Dijkstry.
+
+    Parametry:
+    - graph (Graph):Skierowany graf ważony reprezentowany jako
+                    lista sąsiedztwa.
+    - source (int): Wierzchołek źródłowy, dla którego obliczane
+                    są najkrótsze ścieżki.
+    """
+    distances = dijkstra(graph, source)
+    print("Wybrany wierzchołek źródłowy: ", source)
+    print("Wierzchołek:\tOdległość od źródła:")
     for vertex, distance in enumerate(distances):
         print(f"{vertex}\t\t\t{distance}")
-    return distances
