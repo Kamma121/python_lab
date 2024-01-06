@@ -1,32 +1,44 @@
-
 # Algorytm Dijkstry - Dokumentacja
 
 ***1) Wprowadzenie***
 
-Algorytm Dijkstry to efektywna metoda znajdowania najkrótszych ścieżek w grafie ważonym, skierowanym lub nieskierowanym. Algorytm ten ma zastosowanie w różnych dziedzinach, takich jak sieci komunikacyjne czy trasowanie w systemach informatycznych.
+Algorytm Dijkstry to efektywna metoda znajdowania najkrótszych ścieżek w grafie ważonym, skierowanym lub nieskierowanym.
+Algorytm ten ma zastosowanie w różnych dziedzinach, takich jak sieci komunikacyjne czy trasowanie w systemach
+informatycznych.
 
-Algorytm Dijkstry opiera się na koncepcji relaksacji krawędzi, iteracyjnie aktualizując odległości od wierzchołka źródłowego do pozostałych wierzchołków. Pozwala to znaleźć najkrótsze ścieżki w grafie.
+Algorytm Dijkstry opiera się na koncepcji relaksacji krawędzi, iteracyjnie aktualizując odległości od wierzchołka
+źródłowego do pozostałych wierzchołków. Pozwala to znaleźć najkrótsze ścieżki w grafie.
 
+***2)  Implementacja grafu***
 
+Implementacja grafu w tym programie wykorzystuje strukturę skierowanego grafu ważonego w postaci listy sąsiedztwa.
+Każdy wierzchołek grafu ma przypisaną listę sąsiednich wierzchołków wraz z wagami krawędzi.
+Struktura ta umożliwia efektywne przetwarzanie grafów, szczególnie przy zastosowaniu algorytmów wyszukiwania ścieżek.
 
-***2) Opis interfejsu***
+`Graph`:
 
-Funkcja **dijkstra()** działa w trybie tekstowym, wypisuje odpowiednio wierzchołek i odległość od źródłowego:
-![image](https://github.com/Kamma121/python_lab/assets/109139766/7703ce41-cb21-44f4-bf3d-59c30cad7876)
+Klasa Graph reprezentuje graf. Do jej głównych funkcji należą:
 
+`add_edge(u, v, w)`: Dodaje krawędź od wierzchołka u do v o wadze w.
+`remove_edge(u, v)`: Usuwa krawędź z wierzchołka u do v.
+`get_adjacent_vertices(u)`: Zwraca listę wierzchołków sąsiadujących z wierzchołkiem u.
+`display_graph()`: Wyświetla reprezentację grafu.
 
-***3) Implementacja***
+***3) Implementacja algorytmu***
 
 **`dijkstra(graph,source)`**
 
-Funkcja przyjmuje graf w postaci listy sąsiedztwa oraz wierzchołek źródłowy. Zwraca listę odległości od źródła do każdego innego wierzchołka w grafie.
+Funkcja przyjmuje graf w postaci listy sąsiedztwa oraz wierzchołek źródłowy. Zwraca listę odległości od źródła do
+każdego innego wierzchołka w grafie.
 ![image](https://github.com/Kamma121/python_lab/assets/109139766/72d543a8-34c3-45dc-808b-cbc462664874)
 
 - Algorytm obsługuje błędy, takie jak nieprawidłowy wierzchołek źródłowy
+
 ```
 if source >= graph.vertices or source < 0:
     raise ValueError("Invalid source vertex. Must be within the range [0, {}]".format(graph.vertices - 1))
 ``` 
+
 - Algorytm korzysta z kolejki do implementacji przeszukania grafu wszerz (BFS)
 
 ```
@@ -46,13 +58,14 @@ q.put(source)
 
 ***4) Podsumowanie i wyniki testów***
 
-Algorytm Dijkstry został przetestowany pod kątem poprawności i wydajności. Poniżej znajdują się przykłady testów z modułu `test_dijkstra` dla różnych przypadków, w tym dla przypadków brzegowych. Wszystkie testy zostały przeprwoadzone dla poniższego grafu:
+Algorytm Dijkstry został przetestowany pod kątem poprawności i wydajności. Poniżej znajdują się przykłady testów z
+modułu `test_dijkstra` dla różnych przypadków, w tym dla przypadków brzegowych. Wszystkie testy zostały przeprwoadzone
+dla poniższego grafu:
 
 ![image](https://github.com/Kamma121/python_lab/assets/109139766/4f75f8c5-e2e0-4d6a-a8b7-a4eec54f5eb4)
 
-
-
 - *Testy znajdowania najkrótszych ścieżek dla kilku wierzchołków:*
+
 ```
 def test_dijkstra_for_source_root_0(self):
     result = dijkstra(self.graph, 0)
@@ -68,14 +81,18 @@ def test_dijkstra_for_source_root_5(self):
                                 sys.maxsize, 10, 0, sys.maxsize,
                                 sys.maxsize, sys.maxsize])
 ```                                  
+
 - *Test dla grafu o jednym wierzchołku:*
+
 ```
 def test_single_vertex_graph(self):
     graph = Graph(1)
     result = dijkstra(graph, 0)
     self.assertEqual(result, [0])
 ```
+
 - *Testy dla nieprawidłowych wierzchołków:*
+
 ```
 def test_invalid_source_vertex(self):
     with self.assertRaises(ValueError):
@@ -85,7 +102,9 @@ def test_invalid_source_vertex_negative(self):
     with self.assertRaises(ValueError):
         dijkstra(self.graph, -1)
 ```
+
 - *Test dla wierzchołka bez krawędzi wychodzących:*
+
 ```
 def test_dijkstra_for_unreachable_source_4(self):
     result = dijkstra(self.graph, 4)
@@ -93,7 +112,6 @@ def test_dijkstra_for_unreachable_source_4(self):
     expected_result[4] = 0
     self.assertEqual(result, expected_result)
 ```
-
 
 ***5) Źródła***
 
