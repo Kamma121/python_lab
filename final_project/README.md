@@ -20,8 +20,11 @@ Struktura ta umożliwia efektywne przetwarzanie grafów, szczególnie przy zasto
 Klasa Graph reprezentuje graf. Do jej głównych funkcji należą:
 
 `add_edge(u, v, w)`: Dodaje krawędź od wierzchołka u do v o wadze w.
+
 `remove_edge(u, v)`: Usuwa krawędź z wierzchołka u do v.
+
 `get_adjacent_vertices(u)`: Zwraca listę wierzchołków sąsiadujących z wierzchołkiem u.
+
 `display_graph()`: Wyświetla reprezentację grafu.
 
 ***3) Implementacja algorytmu***
@@ -30,6 +33,7 @@ Klasa Graph reprezentuje graf. Do jej głównych funkcji należą:
 
 Funkcja przyjmuje graf w postaci listy sąsiedztwa oraz wierzchołek źródłowy. Zwraca listę odległości od źródła do
 każdego innego wierzchołka w grafie.
+
 ![image](https://github.com/Kamma121/python_lab/assets/109139766/72d543a8-34c3-45dc-808b-cbc462664874)
 
 - Algorytm obsługuje błędy, takie jak nieprawidłowy wierzchołek źródłowy
