@@ -25,6 +25,7 @@ def dijkstra(graph, source):
     # Inicjalizacja tablic odległości i odwiedzonych wierzchołków
     distances = [sys.maxsize] * graph.vertices
     visited = [False] * graph.vertices
+    parents = [-1] * graph.vertices
 
     # Inicjalizacja kolejki i umieszczenie w niej wierzchołka źródłowego
     distances[source] = 0
@@ -45,6 +46,7 @@ def dijkstra(graph, source):
                 if distance < distances[neighbor]:
                     # Aktualizacja odległości i dodanie sąsiada kolejki
                     distances[neighbor] = distance
+                    parents[neighbor] = current_node
                     q.put(neighbor)
 
     return distances
