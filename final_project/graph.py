@@ -18,18 +18,14 @@ class Graph:
         return iter(self.graph)
 
     def iteredges(self):
-        edges = [(u, v, w) for u, adj in self.graph.items() for v, w in adj]
-        return iter(edges)
-
-    def get_adjacent_vertices(self, u):
-        return iter(self.graph[u])
+        return ((u, v, w) for u, adj in self.graph.items() for v, w in adj)
 
     def remove_edge(self, u, v):
         self.graph[u] = [(vertex, weight) for vertex, weight in self.graph[u] if vertex != v]
         self.edges -= 1
 
     def get_adjacent_vertices(self, u):
-        return [v for v, w in self.graph[u]]
+        return (v for v, w in self.graph[u])
 
     def display_graph(self):
         for i in range(self.vertices):

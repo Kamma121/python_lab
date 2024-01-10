@@ -49,7 +49,7 @@ def dijkstra(graph, source):
                     parents[neighbor] = current_node
                     q.put(neighbor)
 
-    return distances
+    return distances, parents
 
 
 def print_dijkstra_results(graph, source):
@@ -62,7 +62,7 @@ def print_dijkstra_results(graph, source):
     - source (int): Wierzchołek źródłowy, dla którego obliczane
                     są najkrótsze ścieżki.
     """
-    distances = dijkstra(graph, source)
+    distances, parents = dijkstra(graph, source)
     print("Wybrany wierzchołek źródłowy: ", source)
     print("Wierzchołek:\tOdległość od źródła:")
     for vertex, distance in enumerate(distances):
