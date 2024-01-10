@@ -73,15 +73,15 @@ dla poniższego grafu:
 ```
 def test_dijkstra_for_source_root_0(self):
     result = dijkstra(self.graph, 0)
-    self.assertEqual(result, [0, 4, 12, 19, 27, 17, 13, 8, 14])
+    self.assertEqual(result[0], [0, 4, 12, 19, 27, 17, 13, 8, 14])
 
 def test_dijkstra_for_source_root_1(self):
     result = dijkstra(self.graph, 1)
-    self.assertEqual(result, [sys.maxsize, 0, 8, 15, 24, 14, 10, 5, 11])
+    self.assertEqual(result[0], [sys.maxsize, 0, 8, 15, 24, 14, 10, 5, 11])
 
 def test_dijkstra_for_source_root_5(self):
     result = dijkstra(self.graph, 5)
-    self.assertEqual(result, [sys.maxsize, sys.maxsize, sys.maxsize,
+    self.assertEqual(result[0], [sys.maxsize, sys.maxsize, sys.maxsize,
                                 sys.maxsize, 10, 0, sys.maxsize,
                                 sys.maxsize, sys.maxsize])
 ```                                  
@@ -92,7 +92,7 @@ def test_dijkstra_for_source_root_5(self):
 def test_single_vertex_graph(self):
     graph = Graph(1)
     result = dijkstra(graph, 0)
-    self.assertEqual(result, [0])
+    self.assertEqual(result[0], [0])
 ```
 
 - *Testy dla nieprawidłowych wierzchołków:*
@@ -114,7 +114,7 @@ def test_dijkstra_for_unreachable_source_4(self):
     result = dijkstra(self.graph, 4)
     expected_result = [sys.maxsize] * 9
     expected_result[4] = 0
-    self.assertEqual(result, expected_result)
+    self.assertEqual(result[0], expected_result)
 ```
 
 ***5) Źródła***
